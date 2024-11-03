@@ -58,16 +58,18 @@ _start:
 
     # Accept a connection
     connection:
-    lea rsi, [rip + sockaddr_in_client]			#xor rsi, rsi            # NULL for client address
-    lea rdx,[rip+int_accept]						#xor rdx, rdx            # NULL for addrlen
+    			#lea rsi, [rip + sockaddr_in_client]			#xor rsi, rsi            # NULL for client address
+    xor rsi, rsi 
+    			#lea rdx,[rip+int_accept]						#xor rdx, rdx            # NULL for addrlen
+    xor rdx, rdx  
     mov rax, 43             # accept()
     syscall
-    mov rdi,0x1
-    mov rax,0x1
-    mov rdx,24 #13 noramly
-    lea rsi,[sockaddr_in_client + 4] #fart1
-    syscall
-    jmp exit
+    #mov rdi,0x1
+    #mov rax,0x1
+    #mov rdx,13 #13 noramly
+    #mov rsi,0x0		#lea rsi,[sockaddr_in_client + 4] 
+    #syscall
+    #jmp exit
   
     fork_sys:
     xor rsi,rsi
@@ -101,9 +103,9 @@ mov rax,0x3c
 mov rdi,0x0
 syscall
 
-fart:
+GET:
 	.string "\nGet_Request From :\n"
-fart2:
+POST:
 	.string "\nPost_Request\n"
 method_405:
 	.string "./405.html"
@@ -112,8 +114,8 @@ method_405:
 Get_Request:
 	mov rdi,0x1
 	mov rax,0x1
-	mov rdx,19 #13 noramly
-	lea rsi,[rip+fart] #fart1
+	mov rdx,13 #13 noramly
+	lea rsi,[rip+GET] 
 	syscall	
 
 	ret
@@ -123,7 +125,7 @@ POST_REQUEST:
 	mov rdi,0x1
 	mov rax,0x1
 	mov rdx,14
-	lea rsi,[rip+fart2]
+	lea rsi,[rip+POST]
 	syscall
 	ret
 
@@ -212,6 +214,5 @@ File_Open_Read_Write_Subroutine:
     syscall
     ret
 
-IP_hex_to_dec:
-	ret
+
 
