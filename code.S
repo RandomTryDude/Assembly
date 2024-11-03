@@ -187,7 +187,7 @@ File_Open_Read_Write_Subroutine:
     mov rax, 2               # open()
     xor rdx,rdx
     syscall
-    cmp rax,-1
+    cmp rax,0xfffffffffffffffe
     je Not_Get
     
     mov r9, rax                 # Save file descriptor
