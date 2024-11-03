@@ -17,17 +17,16 @@ This repository implements a **basic web server in assembly** language, demonstr
 ## 🚀 Usage
 
 1. **Compile** the assembly code:
-   ```bash
-   nasm -f elf64 code.S -o code.o
-   ld code.o -o a.out
+   ```
+   gcc -nostdlib -static code.S
    ```
    
 2. **Run** the server:
-   ```bash
+   ```
    ./a.out
    ```
 
-3. Access it on **`http://localhost`**.
+3. Access it on **`http://localhost:80`**.
 
 ## 📜 License
 
