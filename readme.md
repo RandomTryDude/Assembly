@@ -57,14 +57,14 @@ If the file cannot be opened (returning -1), the program jumps to the Not_Get la
     .long 0                # INADDR_ANY (bind to any address)
 ```
 You can change the port by update .word 0x5000 to a different value (e.g. , .word 0x5c11 for port 4444)
-The Ip address , is currently set to bind to any address but can be updated by changing .long 0 to a specific IP (e.g. , .long 10.5.10.5)
 
- - 
+
+
 ## 📜 License
 
 This project is open for modification and use—ideal for learning low-level web server mechanics! 🎉
 
--
+
 ## 🛠️📝 TODO
 - Clean up comments.
 - Improve code readability and structure.
