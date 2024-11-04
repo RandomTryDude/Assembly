@@ -4,7 +4,7 @@
 .section .data
 sockaddr_in:  
     .word 2                # AF_INET (IPv4)
-    .word 0x5000           # Port 80 in network byte order (0x5000)
+    .word 0x5c11          # Port 80 in network byte order (0x5000)
     .long 0                # INADDR_ANY (bind to any address)
 
 response_header:
@@ -16,8 +16,7 @@ buffer:
 file_buffer:                
     .space 1024             # Buffer to store the file contents
 
-file_path:
-    .ascii "./flag"  # Path to the file
+
 
 sockaddr_in_client: # for logging purposes
     .word 2                # sin_family: AF_INET (2 for IPv4)
